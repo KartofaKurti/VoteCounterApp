@@ -1,0 +1,26 @@
+﻿@model IEnumerable<VoteCounter.Data.Models.Candidate>
+
+@{
+	ViewData["Title"] = "Избери своя кандидат";
+	Layout = "_Layout";
+}
+
+<section class="hero">
+	<h1>Избери своя кандидат</h1>
+	<p>Гласувай за този, който ще направи промяната!</p>
+</section>
+
+<section class="candidates">
+	@foreach (var candidate in Model)
+	{
+		<a asp-controller="Candidates" asp-action="Details" asp-route-id="@candidate.Id" class="candidate">
+			<div class="photo" style="background-image:url('@candidate.ImageUrl');">
+				<div class="vote-count">@candidate.VoteCount гласа</div>
+			</div>
+			<div class="overlay">
+				<h3>@candidate.Name</h3>
+				<p>Научи повече</p>
+			</div>
+		</a>
+	}
+</section>

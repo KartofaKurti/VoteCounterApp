@@ -1,0 +1,29 @@
+﻿@model VoteCounter.Data.Models.Vote
+
+@{
+	ViewData["Title"] = "Vote";
+}
+
+@if (Model?.Candidate == null)
+{
+	<div class="error">Кандидатът не е намерен.</div>
+	return;
+}
+
+<div class="vote-section">
+	<div class="vote-container">
+		<h1 class="vote-title">Гласувай за @Model.Candidate.Name</h1>
+		<p class="vote-subtitle">Моля, въведете своя имейл, за да потвърдите гласа си.</p>
+
+		<form asp-action="VoteConfirmed" asp-controller="Candidates" method="post">
+			<input type="hidden" name="candidateId" value="@Model.CandidateId" />
+
+			<div class="form-group">
+				<label for="email">Имейл:</label>
+				<input type="email" name="email" id="email" required placeholder="Въведете имейла си" />
+			</div>
+
+			<button type="submit" class="vote-btn">Изпрати гласа си</button>
+		</form>
+	</div>
+</div>

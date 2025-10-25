@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VoteCounter</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- 🌊 Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-controller="Candidates" asp-action="Index">VoteNow</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Candidates" asp-action="Index">Кандидати</a>
+                    </li>
+                    <!-- Removed "Гласувай" link as requested -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 - VoteCounter</p>
+    </footer>
+
+    <!-- ✅ Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <!-- ✅ Popup for Vote Confirmation -->
+    @if (TempData["VoteMessage"] != null)
+    {
+	    <div id="vote-popup" class="vote-popup">
+		    @TempData["VoteMessage"]
+	    </div>
+
+	    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const popup = document.getElementById("vote-popup");
+            if (popup) {
+                popup.style.display = "block";
+                setTimeout(() => {
+                    popup.classList.add("fade-out");
+                    setTimeout(() => popup.remove(), 600);
+                }, 3000);
+            }
+        });
+    </script>
+
+	    <style>
+        .vote-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(90deg, #0096c7, #0077b6);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 119, 182, 0.3);
+            animation: fadeIn 0.5s ease;
+            z-index: 9999;
+        }
+
+        @@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+    </style>
+    }
+
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿@model VoteCounter.Data.Models.Candidate
+
+@{
+	ViewData["Title"] = "Детайли за кандидата";
+	Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/CandidateDetails.css" />
+
+<section class="details-container">
+	<div class="details-photo" style="background-image: url('@Model.ImageUrl');"></div>
+
+	<div class="details-info">
+		<h1>@Model.Name</h1>
+		<p>@Model.Description</p>
+
+		<a asp-action="Vote" asp-route-id="@Model.Id" class="vote-btn">Гласувай за @Model.Name</a>
+	</div>
+</section>

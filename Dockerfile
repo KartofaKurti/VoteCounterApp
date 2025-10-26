@@ -1,27 +1,20 @@
-# ============================
-# Build Stage
-# ============================
+# Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copy csproj and restore dependencies separately for faster builds
+# Copy solution and project files
 COPY *.sln .
-    COPY VoteCounter/*.csproj ./VoteCounter/
-    RUN dotnet restore VoteCounter/VoteCounter.csproj
+COPY VoteCounter/*.csproj ./VoteCounter/
 
-    # Copy the rest of the code and publish
-    COPY . .
-    WORKDIR /app/VoteCounter
-    RUN dotnet publish -c Release -o /app/out
+# Restore dependencies
+RUN dotnet restore VoteCounter/VoteCounter.csproj
 
-    # ============================
-    # Runtime Stage
-    # ============================
-    FROM mcr.microsoft.com/dotnet/aspnet:8.0
-    WORKDIR /app
-    COPY --from=build /app/out ./
+# Copy everything and build
+COPY . .
+RUN dotnet publish VoteCounter/VoteCounter.csproj -c Release -o out
 
-    # Expose the port Render will map dynamically
-    EXPOSE 5000
-
-    ENTRYPOINT ["dotnet", "VoteCounter.dll"]
+# Runtime stage
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /app/out .
+ENTRYPOINT ["dotnet", "VoteCounter.dll"]

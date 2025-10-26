@@ -4,14 +4,14 @@ WORKDIR /app
 
 # Copy solution and project files
 COPY *.sln .
-COPY VoteCounter/*.csproj ./VoteCounter/
+COPY ./*.csproj ./   
 
 # Restore dependencies
-RUN dotnet restore VoteCounter/VoteCounter.csproj
+RUN dotnet restore
 
 # Copy everything and build
 COPY . .
-RUN dotnet publish VoteCounter/VoteCounter.csproj -c Release -o out
+RUN dotnet publish -c Release -o out
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0

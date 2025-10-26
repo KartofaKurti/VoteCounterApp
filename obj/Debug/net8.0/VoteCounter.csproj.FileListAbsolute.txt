@@ -30,7 +30,6 @@ C:\Users\Kartof\source\repos\VoteCounter\VoteCounter\obj\Debug\net8.0\refint\Vot
 C:\Users\Kartof\source\repos\VoteCounter\VoteCounter\obj\Debug\net8.0\VoteCounter.pdb
 C:\Users\Kartof\source\repos\VoteCounter\VoteCounter\obj\Debug\net8.0\VoteCounter.genruntimeconfig.cache
 C:\Users\Kartof\source\repos\VoteCounter\VoteCounter\obj\Debug\net8.0\ref\VoteCounter.dll
-C:\Users\Kartof\source\repos\VoteCounter\VoteCounter\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Kartof\source\repos\VoteCounter\VoteCounter\bin\Debug\net8.0\Humanizer.dll
 C:\Users\Kartof\source\repos\VoteCounter\VoteCounter\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Kartof\source\repos\VoteCounter\VoteCounter\bin\Debug\net8.0\Microsoft.Build.Locator.dll

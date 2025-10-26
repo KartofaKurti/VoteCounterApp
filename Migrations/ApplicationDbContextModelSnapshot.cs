@@ -46,7 +46,7 @@ namespace VoteCounter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Candidates");
+                    b.ToTable("Candidates", (string)null);
 
                     b.HasData(
                         new
@@ -94,7 +94,7 @@ namespace VoteCounter.Migrations
 
                     b.HasIndex("CandidateId");
 
-                    b.ToTable("Votes");
+                    b.ToTable("Votes", (string)null);
                 });
 
             modelBuilder.Entity("VoteCounter.Data.Models.Vote", b =>

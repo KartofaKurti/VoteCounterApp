@@ -5,15 +5,39 @@
 	Layout = "_Layout";
 }
 
-<link rel="stylesheet" href="~/css/CandidateDetails.css" />
+<link rel="stylesheet" href="~/css/CandidateDetails.css" asp-append-version="true" />
 
-<section class="details-container">
-	<div class="details-photo" style="background-image: url('@Model.ImageUrl');"></div>
 
-	<div class="details-info">
-		<h1>@Model.Name</h1>
-		<p>@Model.Description</p>
+<section class="cd-hero">
+	<div class="cd-hero-inner">
+		<img class="cd-photo" src="@(Url.Content(Model.ImageUrl))" alt="@Model.Name" />
+		<div class="cd-headline">
+			<h1>@Model.Name</h1>
+			<p class="cd-sub">@Model.Description</p>
+			<a asp-action="Vote" asp-route-id="@Model.Id" class="cd-vote-btn">Гласувай за @Model.Name</a>
+		</div>
+	</div>
+</section>
 
-		<a asp-action="Vote" asp-route-id="@Model.Id" class="vote-btn">Гласувай за @Model.Name</a>
+<section class="cd-info">
+	<div class="cd-info-grid">
+		<article class="cd-card">
+			<h2>Биография</h2>
+			<p>@(Model.Description ?? "Кратка биография ще бъде добавена скоро.")</p>
+		</article>
+
+		<article class="cd-card">
+			<h2>Визия</h2>
+			<p>Да изгради бъдеще, в което общността работи заедно — с прозрачност, доверие и развитие.</p>
+		</article>
+
+		<article class="cd-card">
+			<h2>Основни цели</h2>
+			<ul>
+				<li>Устойчиво развитие и справедливост.</li>
+				<li>Модерни решения за предизвикателствата на днешния ден.</li>
+				<li>Възможности за младите хора.</li>
+			</ul>
+		</article>
 	</div>
 </section>

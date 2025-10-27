@@ -1,29 +1,38 @@
 ﻿@model VoteCounter.Data.Models.Vote
 
 @{
-	ViewData["Title"] = "Vote";
+	ViewData["Title"] = "Гласуване";
+	Layout = "_Layout";
 }
 
-@if (Model?.Candidate == null)
-{
-	<div class="error">Кандидатът не е намерен.</div>
-	return;
-}
+<link rel="stylesheet" href="~/css/Vote.css" asp-append-version="true" />
 
-<div class="vote-section">
-	<div class="vote-container">
-		<h1 class="vote-title">Гласувай за @Model.Candidate.Name</h1>
-		<p class="vote-subtitle">Моля, въведете своя имейл, за да потвърдите гласа си.</p>
-
-		<form asp-action="VoteConfirmed" asp-controller="Candidates" method="post">
-			<input type="hidden" name="candidateId" value="@Model.CandidateId" />
-
-			<div class="form-group">
-				<label for="email">Имейл:</label>
-				<input type="email" name="email" id="email" required placeholder="Въведете имейла си" />
+<section class="vote-section">
+	<div class="vote-card">
+		@if (Model?.Candidate == null)
+		{
+			<div class="error">❌ Кандидатът не е намерен.</div>
+		}
+		else
+		{
+			<div class="vote-header">
+				<div class="candidate-photo" style="background-image: url('@Model.Candidate.ImageUrl');"></div>
+				<h1 class="vote-title">Гласувай за <span>@Model.Candidate.Name</span></h1>
+				<p class="vote-subtitle">
+					Моля, въведете своя имейл, за да потвърдите гласа си. Всеки потребител може да гласува само веднъж.
+				</p>
 			</div>
 
-			<button type="submit" class="vote-btn">Изпрати гласа си</button>
-		</form>
+			<form asp-action="VoteConfirmed" asp-controller="Candidates" method="post" class="vote-form">
+				<input type="hidden" name="candidateId" value="@Model.CandidateId" />
+
+				<div class="form-group">
+					<label for="email">Имейл адрес:</label>
+					<input type="email" name="email" id="email" required placeholder="Въведете своя имейл" />
+				</div>
+
+				<button type="submit" class="vote-btn">Изпрати гласа си</button>
+			</form>
+		}
 	</div>
-</div>
+</section>

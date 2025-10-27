@@ -15,7 +15,15 @@
 	{
 		<a asp-controller="Candidates" asp-action="Details" asp-route-id="@candidate.Id" class="candidate">
 			<div class="photo" style="background-image:url('@candidate.ImageUrl');">
-				<div class="vote-count">@candidate.VoteCount гласа</div>
+				@if (candidate.VoteCount != 1)
+				{
+					<div class="vote-count">@candidate.VoteCount гласа</div>
+				}
+				else
+				{
+					<div class="vote-count">@candidate.VoteCount глас</div>
+				}
+				
 			</div>
 			<div class="overlay">
 				<h3>@candidate.Name</h3>

@@ -17,29 +17,29 @@ namespace VoteCounter.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Seed 3 candidates for testing
+            // ✅ Real candidate data
             modelBuilder.Entity<Candidate>().HasData(
                 new Candidate
                 {
                     Id = 1,
-                    Name = "Кандидат 1",
-                    Description = "Опитен лидер с визия за бъдещето.",
+                    Name = "Борислав Сапунджиев",
+                    Description = "Амбициозен и всеотдаен човек с ясна визия за развитие и успех.",
                     ImageUrl = "/images/candidate1.jpg",
                     VoteCount = 0
                 },
                 new Candidate
                 {
                     Id = 2,
-                    Name = "Кандидат 2",
-                    Description = "Млад и амбициозен с нови идеи.",
+                    Name = "Валентин Узунов",
+                    Description = "Спокоен, решителен и вдъхновяващ лидер, готов да изслуша и помогне.",
                     ImageUrl = "/images/candidate2.jpg",
                     VoteCount = 0
                 },
                 new Candidate
                 {
                     Id = 3,
-                    Name = "Кандидат 3",
-                    Description = "Човек на действието и резултатите.",
+                    Name = "Атанас Кьосеиванов",
+                    Description = "Иновативен мислител с практичен подход и отдаденост на екипа.",
                     ImageUrl = "/images/candidate3.jpg",
                     VoteCount = 0
                 }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VoteCounter.Data;
 
@@ -10,9 +11,11 @@ using VoteCounter.Data;
 namespace VoteCounter.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251106180102_UpdateCandidatesBio")]
+    partial class UpdateCandidatesBio
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,7 +56,7 @@ namespace VoteCounter.Migrations
                         {
                             Id = 1,
                             Description = "Мъдър и далновиден лидер, който вярва в силата на знанието и последователните действия.",
-                            ImageUrl = "/images/candidate1.jpg",
+                            ImageUrl = "/images/borislav.jpg",
                             Name = "Борислав Сапунджиев",
                             VoteCount = 0
                         },
@@ -61,7 +64,7 @@ namespace VoteCounter.Migrations
                         {
                             Id = 2,
                             Description = "Решителен и справедлив защитник на свободата на словото и обществения диалог.",
-                            ImageUrl = "/images/candidate2.jpg",
+                            ImageUrl = "/images/valentin.jpg",
                             Name = "Валентин Узунов",
                             VoteCount = 0
                         },
@@ -69,7 +72,7 @@ namespace VoteCounter.Migrations
                         {
                             Id = 3,
                             Description = "Идеалист с вяра в общността и социалната справедливост.",
-                            ImageUrl = "/images/candidate3.jpg",
+                            ImageUrl = "/images/atanas.jpg",
                             Name = "Атанас Кьосеиванов",
                             VoteCount = 0
                         });

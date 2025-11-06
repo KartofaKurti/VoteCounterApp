@@ -23,7 +23,7 @@ namespace VoteCounter.Data
                 {
                     Id = 1,
                     Name = "Борислав Сапунджиев",
-                    Description = "Амбициозен и всеотдаен човек с ясна визия за развитие и успех.",
+                    Description = "Мъдър и далновиден лидер, който вярва в силата на знанието и последователните действия.",
                     ImageUrl = "/images/candidate1.jpg",
                     VoteCount = 0
                 },
@@ -31,7 +31,7 @@ namespace VoteCounter.Data
                 {
                     Id = 2,
                     Name = "Валентин Узунов",
-                    Description = "Спокоен, решителен и вдъхновяващ лидер, готов да изслуша и помогне.",
+                    Description = "Решителен и справедлив защитник на свободата на словото и обществения диалог.",
                     ImageUrl = "/images/candidate2.jpg",
                     VoteCount = 0
                 },
@@ -39,11 +39,13 @@ namespace VoteCounter.Data
                 {
                     Id = 3,
                     Name = "Атанас Кьосеиванов",
-                    Description = "Иновативен мислител с практичен подход и отдаденост на екипа.",
+                    Description = "Идеалист с вяра в общността и социалната справедливост.",
                     ImageUrl = "/images/candidate3.jpg",
                     VoteCount = 0
                 }
             );
+
+
         }
     }
 }

@@ -41,7 +41,7 @@ namespace VoteCounter.Controllers
             var vote = new Vote
             {
                 CandidateId = candidate.Id,
-                Candidate = candidate // ✅ това гарантира, че View получава Candidate
+                Candidate = candidate 
             };
 
             return View(vote);
@@ -60,7 +60,7 @@ namespace VoteCounter.Controllers
             if (candidate == null)
                 return NotFound();
 
-            // ✅ Проверка дали този имейл вече е гласувал
+          
             var alreadyVoted = _context.Votes.Any(v => v.Email.ToLower() == vote.Email.ToLower());
             if (alreadyVoted)
             {
@@ -68,7 +68,6 @@ namespace VoteCounter.Controllers
                 return RedirectToAction("Index");
             }
 
-            // ✅ Ако е нов имейл → записваме гласа
             candidate.VoteCount++;
             _context.Votes.Add(vote);
             _context.SaveChanges();
